@@ -46,26 +46,6 @@ document.__proto__.createHTMLCollection = function(collectionArray) {
 
     for(let i =0;i<collectionArray.length;i++) nd[i] = {value:collectionArray[i], enumerable:true};
 
-   // Object.defineProperty(nd, "length", {value:collectionArray.length});
-
-     /*{
-        get: function() {
-            return collectionArray.length;
-        }
-    }*/
-
-   /* nd.prototype = {
-        item: function(i) {
-            return this[i] != null ? this[i] : null;
-        },
-        namedItem: function(name) {
-            for(let i = 0;i<this.length;i++) {
-                if(this[i].id===name || this[i].name===name) return this[i];
-            }
-            return null;
-        }
-    }*/
-
     Object.freeze(nd);
     return Object.create(HTMLCollection.prototype, nd);
 }
@@ -107,16 +87,6 @@ HTMLElement.prototype.getChildsByClassName = function(childClassName) {
     }
     return document.createHTMLCollection(arguments[1]);
 }
-/*
-HTMLElement.prototype.childQuerySelector = function(query) {
-    for(let child of this.childNodes) {
-        if(child.hasChildNodes()) { let res = child.getChildByTagName(childTag); if(res!=null && res!=undefined) return res; }
-        if(child.tagName==childTag) { return child; }
-    }
-    return null;
-}
-
-HTMLElement.prototype.childQuerySelectorAll = function() {}*/
 
 //Get Class position of element
 HTMLElement.prototype.getClassPosition = function(class_num, parent=null) {
@@ -168,18 +138,11 @@ Element.prototype.addEventAfterLoad = function(target, event, callback, capture=
     }
 }
 
-/*HTMLCollection.prototype.addEventAfterLoad = function() {
-    
-}*/
 
 /* Animations Layer */
 Animation = function() {
     
 }
-/*
-function setTimeoutLoop(from, how, callback, time) {
-    if(from>=how) setTimeout(callback, time); else { setTimeout(callback, time); setTimeout(function() { setTimeoutLoop(from+1, how, callback, time); }, time); };
-}*/
 
 function setAnimationLoop(from, how, callback, time=2000, starttime=0) { /* , starttime=0 if(from=starttime) callback(); else  */
     console.log(from);
